@@ -5,6 +5,7 @@ const postInputLabel = document.querySelector('#postInputLabel')
 const postForm = document.querySelector('#postForm')
 const messageInput = document.querySelector('#messageInput')
 const postsList = document.querySelector('#postsList')
+const postSubmitButton = document.querySelector('#postSubmitButton')
 
 const username = localStorage.getItem('username')
 
@@ -13,6 +14,7 @@ const handleGetPosts = () => {
 }
 
 const submitPost = async (username, message) => {
+  postSubmitButton.disabled = true
   return await axios.post(ENDPOINT, {
     username,
     message,
@@ -58,5 +60,6 @@ postForm.addEventListener('submit', async (event) => {
     posts.push(res.data)
     writePostsToList(posts)
     clearForm()
+    postSubmitButton.disabled = false
   })
 })
