@@ -15,10 +15,12 @@ const handleGetPosts = () => {
 
 const submitPost = async (username, message) => {
   postSubmitButton.disabled = true
-  return await axios.post(ENDPOINT, {
+  const res = await axios.post(ENDPOINT, {
     username,
     message,
   })
+  postSubmitButton.disabled = false
+  return res
 }
 
 const clearForm = () => {
@@ -31,14 +33,14 @@ const writePostsToList = (posts) => {
       return `<li class="list-group-item d-flex flex-column post-item">
       <div class="d-flex justify-content-between align-items-center">
         <span class="font-weight-light">${post.username}</span>
-        <span class="font-italic">${Date(post.timestamp).toString().slice(0,24)}</span>
+        <span class="font-italic">${Date(post.timestamp).toString().slice(0, 24)}</span>
       </div>
       <h5>${post.message}</h5>
     </li>`
     })
     .join('')
   postsList.innerHTML = html
-  postsList.scrollTop = postsList.offsetHeight
+  postsList.scrollTop = postsList.offsetHeight * posts.length
 }
 
 if (!username) {
@@ -60,6 +62,5 @@ postForm.addEventListener('submit', async (event) => {
     posts.push(res.data)
     writePostsToList(posts)
     clearForm()
-    postSubmitButton.disabled = false
   })
 })
