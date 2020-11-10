@@ -1,0 +1,48 @@
+/* 
+rose-gold: #f1beb0 
+black: #2b2b2b
+white: #e1dbd1
+*/
+
+html {
+  height: 100vh;
+}
+
+body {
+  min-height: 100vh;
+  background-color: #f1beb0;
+  color: #2b2b2b;
+}
+
+#loginForm {
+  min-width: 40vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#postsList {
+  overflow: auto;
+}
+
+.btn {
+  background-color: #2b2b2b;
+  border: 1px #2b2b2b solid;
+  color: #e1dbd1;
+  
+}
+
+.btn:hover {
+  border: 1px #2b2b2b solid;
+  background-color: #2b2b2b;
+  color: #e1dbd1;
+}
+
+li {
+  background-color: #2b2b2b;
+  color: #f1beb0;
+}
+
+.post-item {
+  background-color: #2b2b2b;
+}
